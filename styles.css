@@ -36,6 +36,10 @@ header h1{
     text-transform: uppercase;
     cursor: pointer;
 }
+.sort-option button:hover{
+background-color: #f09d00;
+}
+
 .sort-heading{
     display: flex;
     justify-content: space-between;
@@ -65,4 +69,45 @@ header h1{
 .list .list-items div:nth-child(1),
 .list .list-items div:nth-child(2){
     flex: 1;
+}
+.user-input{
+   background-color: #f3d353;
+   padding: 15px;
+   width: 100%;
+   max-width: 480px;
+   margin: 30px auto;
+   border-radius: 8px;
+}
+.user-input form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+.user-input form input{
+    outline: none;
+    height: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #fff;
+}
+.user-input form label{
+    margin: 5px;
+    font-weight: 900;
+    font-size: 18px;
+}
+.user-input form button{
+    width: 50%;
+    align-self: center;
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: #f09d00;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+}
+.user-input form button:hover{
+    background-color: #ffce00;
 }
