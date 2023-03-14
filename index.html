@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>sortinglogic</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <header><h1>Object Sorting</h1></header>
-<main>
-    <section class="user-input">
-     <form id="form">
-        <label>Name</label>
-        <input id="name" />
-        <label>Meta</label>
-        <input id="meta"/>
-        <label>Age</label>
-        <input id="age"/>
-        <button type="submit" id="addbutton">Add</button>
-     </form>
-    </section>
-    <section class="sort-option">
-<button class="sort-name">Sort by name</button>
-<button class="sort-meta">sort by meta</button>
-<button class="sort-age">sort by age</button>
-    </section>
-    <section class="sort-heading">
+    <main>
+      <section class="user-input">
+        <form id="form">
+          <label>Name</label>
+          <input id="name" />
+          <label>Meta</label>
+          <input id="meta" />
+          <label>Age</label>
+          <input id="age" />
+          <button type="submit" id="addbutton">Add</button>
+        </form>
+      </section>
+      <section class="sort-option">
+        <button class="sort-name">Sort by name</button>
+        <button class="sort-meta">sort by meta</button>
+        <button class="sort-age">sort by age</button>
+      </section>
+      <section class="sort-heading">
         <div class="header-title">Name</div>
         <div class="header-meta">Suit color</div>
         <div class="header-age">Age</div>
-    </section>
-    <section class="list"></section>
-    
-</main>
+      </section>
+      <section class="list"></section>
+    </main>
     <script src="app.js"></script>
-</body>
+  </body>
 </html>

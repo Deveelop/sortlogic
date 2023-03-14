@@ -1,101 +1,94 @@
-const userForm = document.querySelector('#form')
-const sortName = document.querySelector('.sort-name');
-const sortMeta = document.querySelector('.sort-meta');
-const sortAge = document.querySelector('.sort-age');
-const list = document.querySelector('.list');
+const userForm = document.querySelector("#form");
+const sortName = document.querySelector(".sort-name");
+const sortMeta = document.querySelector(".sort-meta");
+const sortAge = document.querySelector(".sort-age");
+const list = document.querySelector(".list");
 
-const listItem = [
-    {
-        name: 'The Flash',
-        meta: 'Red & Yellow',
-        age: '24'
-    },
-    {
-        name: 'Batman',
-        meta: 'Black',
-        age: '57'
-    },
-    {
-        name: 'Superman',
-        meta: 'Red & Blue',
-        age: '32'
-    },
-    {
-        name: 'Wonder Woman',
-        meta: 'Gold',
-        age: '30'
-    },
-    {
-        name: 'Vicson Devee',
-        meta: 'White & Black',
-        age: '27'
-    },
-];
+const showPopup = (msg, className) => {
+  const div = document.createElement("div");
+  div.className = `alert notification is-primary is-light-${className}`;
+  div.appendChild(document.createTextNode(msg));
 
-userForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-let name = document.querySelector('#name');
-let meta = document.querySelector('#meta');
-let age = document.querySelector('#age');
+  const container = document.querySelector(".user-input");
+  const main = document.querySelector("#form");
 
-const userInput = {
+  container.insertBefore(div, main);
+  setTimeout(() => document.querySelector(".alert").remove(), 3000);
+};
+
+let listItem = [];
+
+userForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let name = document.querySelector("#name");
+  let meta = document.querySelector("#meta");
+  let age = document.querySelector("#age");
+
+  let userInput = {
     name: name.value,
-    meta: meta. value,
-    age: age.value
-}
+    meta: meta.value,
+    age: age.value,
+  };
 
-
+  if (!name.value || !meta.value || !age.value) {
+    showPopup("Please fill in all fields", "notification is-danger");
+  } else {
+    listItem.push(userInput);
+    document.forms[0].reset();
+    localStorage.setItem("setList", JSON.stringify(listItem));
+    displayList();
+  }
 });
 
 const displayList = () => {
-list.innerHTML = '';
-const entireList = listItem.map((items) => {
-    return `
+  const entireList = listItem
+    .map((items) => {
+      return `
     <div class= "list-items">
     <div class = "item-title">${items.name}</div>
     <div class = "item-title">${items.meta}</div>
     <div class = "item-title">${items.age}</div>
     </div>
-    `
-}).join('');
-list.innerHTML= entireList;
-
-}
-displayList();
+    `;
+    })
+    .join("");
+  list.innerHTML = entireList;
+};
 
 let desc = false;
-sortName.addEventListener('click', () => {
-let array = sortArrayBy(listItem, 'name', desc);
-displayList(array);
-desc = !desc;
+sortName.addEventListener("click", () => {
+  let array = sortArrayBy(listItem, "name", desc);
+  displayList(array);
+  desc = !desc;
 });
 
-sortMeta.addEventListener('click', () => {
-let array = sortArrayBy(listItem, 'meta', desc);
-displayList(array);
-desc = !desc;
+sortMeta.addEventListener("click", () => {
+  let array = sortArrayBy(listItem, "meta", desc);
+  displayList(array);
+  desc = !desc;
 });
 
-sortAge.addEventListener('click', () => {
-    let array = sortArrayBy(listItem, 'age', desc);
-    displayList(array);
-    desc = !desc;
+sortAge.addEventListener("click", () => {
+  let array = sortArrayBy(listItem, "age", desc);
+  displayList(array);
+  desc = !desc;
 });
 
 const sortArrayBy = (array, sort, desc) => {
-    array.sort((a, b) => {
-        if(a[sort] < b[sort]) return -1;
-        if(a[sort] > b[sort]) return 1;
+  array.sort((a, b) => {
+    if (a[sort] < b[sort]) return -1;
+    if (a[sort] > b[sort]) return 1;
 
-        return 0;
-    });
+    return 0;
+  });
 
-    if(desc)array.reverse()
+  if (desc) array.reverse();
 
-    return array;
-}
+  return array;
+};
 
-// I USED MAP FUNCTION TO ITERATE THROUGH THE ARRAY INSTEAD OF THIS GIANT FOR LOOP
+// I USED MAP FUNCTION TO ITERATE THROUGH THE ARRAY INSTEAD OF THIS GIANT FOR-LOOP
 // for (let i=0; i<array.length; i++){
 //     let item = array[i];
 //         let itemElement = document.createElement('div');
